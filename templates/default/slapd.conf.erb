@@ -17,7 +17,7 @@ TLSCACertificateFile   <%= node['openldap']['cafile'] %>
 <% end -%>
 
 # Schema and objectClass definitions
-<% node['openldap']['schemas'].sort.each do |schema| -%>
+<% node['openldap']['schemas'].each do |schema| -%>
 include         <%= node['openldap']['dir'] %>/schema/<%= schema %>
 <% end -%>
 
