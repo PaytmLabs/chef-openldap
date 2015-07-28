@@ -84,7 +84,7 @@ if node['platform_family'] == 'debian' || node['platform_family'] == 'rhel'
   end
 
   execute 'slapd-config-convert' do
-    command "slaptest -u -f #{node['openldap']['dir']}/slapd.conf -F #{node['openldap']['dir']}/slapd.d/"
+    command "rm -rf #{node['openldap']['dir']}/slapd.d/* && slaptest -u -f #{node['openldap']['dir']}/slapd.conf -F #{node['openldap']['dir']}/slapd.d/"
     user node['openldap']['system_user']
     action :nothing
     notifies :start, 'service[slapd]', :immediately
