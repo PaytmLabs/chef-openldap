@@ -77,7 +77,11 @@ when 'debian'
   default['openldap']['packages']['srv_pkg'] = 'slapd'
   default['openldap']['packages']['auth_pkgs'] = %w(libnss-ldap libpam-ldap)
 when 'rhel'
-  default['openldap']['packages']['bdb'] = 'db4-utils'
+  if node['platform_version'].to_i < 7
+    default['openldap']['packages']['bdb'] = 'db4-utils'
+  else
+    default['openldap']['packages']['bdb'] = 'libdb-utils'
+  end
   default['openldap']['packages']['client_pkg'] = 'openldap-clients'
   default['openldap']['packages']['srv_pkg'] = 'openldap-servers'
   default['openldap']['packages']['auth_pkgs'] = %w(nss-pam-ldapd)
