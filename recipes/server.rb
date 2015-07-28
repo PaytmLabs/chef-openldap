@@ -75,7 +75,7 @@ if node['platform_family'] == 'debian'
   end
 end
 
-if node['platform_family'] == 'debian' || node['platform'] == 'centos'
+if node['platform_family'] == 'debian' || node['platform_family'] == 'rhel'
   directory "#{node['openldap']['dir']}/slapd.d" do
     recursive true
     owner node['openldap']['system_user']
@@ -96,7 +96,7 @@ if node['platform_family'] == 'debian' || node['platform'] == 'centos'
     owner node['openldap']['system_user']
     group node['openldap']['system_group']
     notifies :stop, 'service[slapd]', :immediately
-    notifies :run, 'execute[slapd-config-convert]'
+    notifies :run, 'execute[slapd-config-convert]', :immediately
   end
 else
   template "#{node['openldap']['dir']}/slapd.conf" do
