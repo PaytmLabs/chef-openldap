@@ -75,7 +75,7 @@ if node['platform_family'] == 'debian'
   end
 end
 
-if node['platform_family'] == 'debian' || node['platform_family'] == 'rhel'
+if node['platform_family'] == 'debian' || node['platform'] == 'centos'
   directory "#{node['openldap']['dir']}/slapd.d" do
     recursive true
     owner node['openldap']['system_user']
