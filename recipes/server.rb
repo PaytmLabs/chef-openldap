@@ -73,7 +73,9 @@ if node['platform_family'] == 'debian'
     group node['root_group']
     mode '0644'
   end
+end
 
+if node['platform_family'] == 'debian' || node['platform_family'] == 'rhel'
   directory "#{node['openldap']['dir']}/slapd.d" do
     recursive true
     owner node['openldap']['system_acct']
