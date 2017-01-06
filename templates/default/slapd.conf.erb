@@ -75,7 +75,7 @@ dbconfig set_lk_max_lockers 1500
 # Indexes
 ##
 index default pres,eq,approx,sub
-index objectClass eq
+index objectClass,entryCSN,entryUUID eq
 index cn,ou,sn,uid,l,mail,gecos,memberUid,description
 index loginShell,homeDirectory pres,eq,approx
 index uidNumber,gidNumber pres,eq
