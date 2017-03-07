@@ -92,6 +92,7 @@ syncrepl rid=<%= node['openldap']['slapd_rid'] %>
   interval=<%= node['openldap']['syncrepl_interval'] %>
   searchbase="<%= node['openldap']['basedn'] %>"
   filter="<%= node['openldap']['syncrepl_filter'] %>"
+  retry="<%= node['openldap']['syncrepl_retry'] %>"
   scope=sub
   schemachecking=off
   bindmethod=simple

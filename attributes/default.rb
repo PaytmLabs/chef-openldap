@@ -154,6 +154,7 @@ default['openldap']['slapd_rid'] = 102
 default['openldap']['syncrepl_interval'] = '01:00:00:00'
 default['openldap']['syncrepl_type'] = 'refreshAndPersist'
 default['openldap']['syncrepl_filter'] = '(objectClass=*)'
+default['openldap']['syncrepl_retry'] = '6 10 30 +'
 default['openldap']['syncrepl_use_tls'] = 'no' # yes or no
 default['openldap']['syncrepl_dn'] = "cn=syncrole,#{node['openldap']['basedn']}"
 
@@ -162,7 +163,7 @@ default['openldap']['syncrepl_dn'] = "cn=syncrole,#{node['openldap']['basedn']}"
 # see readme for usage information
 
 # The maximum number of entries that is returned for a search operation
-default['openldap']['server_config_hash']['sizelimit'] = 500
+default['openldap']['server_config_hash']['sizelimit'] = 5000
 
 default['openldap']['client_config_hash']['ldap_version'] = 3
 default['openldap']['client_config_hash']['bind_policy'] = 'soft'
